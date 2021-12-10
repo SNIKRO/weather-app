@@ -18,21 +18,42 @@ export default function App() {
 
   async function gettingWeather(event) {
     event.preventDefault();
-    if(cityName){
-      const api_url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${weatherApiKey}&units=metric`);
+    const api_url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${weatherApiKey}&units=metric`);
+    console.log(api_url);
+    if(api_url.ok) {
       const data = await api_url.json();
       setCityData( {
         temp: data.main.temp,
         city: data.name,
         country: data.sys.country,
+        errorMessage: undefined,
       });
-    }
+  }
+  else{
+    setCityData({
+      errorMessage: api_url.statusText,
+      temp: undefined,
+      city: undefined,
+      country: undefined,
+      error: true,
+    });
+  }
   }
   return (
-    <div>
-      <Info />
-      <Form weatherButton={gettingWeather} onCityChange={handleCityName}/>
-      <Weather temp={cityData.temp} city={cityData.city} />
-    </div>
+    <div className="wrapper" >
+      <div className="main">
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-5 info">
+            <Info />
+            </div>
+            <div className="col-sm-7 form">
+            <Form weatherButton={gettingWeather} onCityChange={handleCityName}/>
+            <Weather temp={ cityData.temp } city={cityData.city} error={cityData.errorMessage} /> 
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
   );
 }
