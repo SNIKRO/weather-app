@@ -5,8 +5,7 @@ import Weather from "./components/weather";
 import config from "./config";
 
 
-const weatherApiKey = config.API_KEY;
-
+const weatherApiKey = config.API_KEY.WEATHER_API_KEY;
 
 export default function App() {
   const [cityName, setCity] = useState();

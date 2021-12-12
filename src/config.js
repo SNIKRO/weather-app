@@ -1,3 +1,7 @@
-const API_KEY =  {"API_KEY":"98a0ea42a50e7e8cb0ad45faae17836d"};
+const WEATHER_API_KEY = {"WEATHER_API_KEY":"98a0ea42a50e7e8cb0ad45faae17836d"};
+const GOOGLE_MAP_KEY = {"GOOGLE_MAP_KEY":"AIzaSyCYLYn43KUBfy3VCNZvd9CaIzFMlA0VDqg"};
 
-module.exports = API_KEY;
+module.exports = {
+  API_KEY: WEATHER_API_KEY,
+  MAP_KEY: GOOGLE_MAP_KEY,
+};
