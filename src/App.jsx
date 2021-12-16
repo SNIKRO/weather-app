@@ -18,7 +18,6 @@ export default function App() {
   async function gettingWeather(event) {
     event.preventDefault();
     const api_url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${weatherApiKey}&units=metric`);
-    console.log(api_url);
     if(api_url.ok) {
       const data = await api_url.json();
       setCityData( {

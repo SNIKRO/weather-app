@@ -1,9 +1,14 @@
 import React from 'react'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import config from '../../config';
-
+//import urlib from 'urllib';
 
 const mapApiKey = config.MAP_KEY.GOOGLE_MAP_KEY;
+
+const map = fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=${mapApiKey}`)
+
+console.log(map);
+
 
 const containerStyle = {
   width: '400px',
@@ -17,7 +22,7 @@ const center = {
 function MyComponent() {
   return (
     <LoadScript
-      googleMapsApiKey = {mapApiKey}
+      googleMapsApiKey={mapApiKey}
     >
       <GoogleMap
         mapContainerStyle={containerStyle}
